@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
@@ -18,14 +19,20 @@ public class Signin extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		
+
+		String url = "jdbc:postgresql://localhost:5432/madnotes?user=postgres&password=pass1234";
+
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		String preppedQuery = "SELECT email, password FROM accounts, profiles WHERE email = ? AND password = ? AND accounts.user_id = profiles.user_id;";
-		
+
+		String preppedQuery = "SELECT * FROM accounts, profiles"
+				+ " WHERE email = ? AND password = ?"
+				+ " AND accounts.user_id = profiles.user_id;";
+
 		Connection con = null;
 		PreparedStatement ps = null;
-		
+		ResultSet rs = null;
+
 		try {
 			Class.forName("org.postgresql.Driver");
 		} catch (ClassNotFoundException e) {
@@ -33,52 +40,44 @@ public class Signin extends HttpServlet {
 		}
 
 		try {
-			String url = "jdbc:postgresql://ec2-54-227-242-149.compute-1.amazonaws.com:5432/dcn41adan5r6m3?user=ticuspaqnevrws&password=nk9tAnxNavHirES6_UxGkzLn9x";
 			con = DriverManager.getConnection(url);
-			ps = con.prepareStatement(preppedQuery);
-			
-			// Begin inner-try/catch for PreparedStatement execution
 			try {
 				ps = con.prepareStatement(preppedQuery);
 
 				ps.setString(1, email);
 				ps.setString(2, password);
 
-				System.out.println("SQL=" + preppedQuery.toString()); // DEBUG
+				rs = ps.executeQuery();
 
-				ps.execute();
+				boolean isEmpty = rs.next();
+				if (!isEmpty) {
+					response.sendRedirect("loginfailure.jsp");
+				} else if (isEmpty) {
 
-				System.out.println("Executed=" + preppedQuery.toString()); // DEBUG
+					HttpSession session = request.getSession(true);
+					session.setAttribute("user_id", rs.getInt("user_id"));
+					session.setAttribute("email", rs.getString("email"));
+					session.setAttribute("firstname", rs.getString("firstname"));
+					session.setAttribute("lastname", rs.getString("lastname"));
+					session.setAttribute("about", rs.getString("about"));
 
-				HttpSession session = request.getSession(true);
-				session.setAttribute("email", email);
-				session.setAttribute("password", password);
-				
-				// RESPONSE TO CLIENT
-				response.sendRedirect("welcome.jsp");
-				
+					response.sendRedirect("loginsuccess.jsp");
+					return;
+				}
 			} catch (Exception e) {
 				e.printStackTrace();
 			} finally {
 				if (ps != null) {
-			        try {
-			            ps.close();
-			        } catch (SQLException e) {
-			        	e.printStackTrace();
-			        	}
-			    }
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			if (con != null) {
-				try {
-					con.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
+					try {
+						ps.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
 				}
 			}
+		} catch (SQLException e) {
+			System.out.println("SQLException occured: " + e.getMessage());
+			e.printStackTrace();
 		}
 	}
 

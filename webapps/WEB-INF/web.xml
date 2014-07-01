@@ -11,56 +11,79 @@
 
 	<servlet>
 		<servlet-name>Signin</servlet-name>
-		<servlet-class>com.devcru.madnotes</servlet-class>
+		<servlet-class>com.devcru.madnotes.Signin</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Signin</servlet-name>
 		<url-pattern>/signin</url-pattern>
 	</servlet-mapping>
 
-	<error-page>
-		<!-- Missing login -->
-		<error-code>401</error-code>
-		<location>/general-error.html</location>
-	</error-page>
+	<servlet>
+		<servlet-name>Logout</servlet-name>
+		<servlet-class>com.devcru.madnotes.Logout</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Logout</servlet-name>
+		<url-pattern>/logout</url-pattern>
+	</servlet-mapping>
 
-	<error-page>
-		<!-- Forbidden directory listing -->
-		<error-code>403</error-code>
-		<location>/general-error.html</location>
-	</error-page>
+	<servlet>
+		<servlet-name>Register</servlet-name>
+		<servlet-class>com.devcru.madnotes.Register</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Register</servlet-name>
+		<url-pattern>/register</url-pattern>
+	</servlet-mapping>
 
-	<error-page>
-		<!-- Page not found -->
-		<error-code>404</error-code>
-		<location>/error.jsp</location>
-	</error-page>
+	<servlet>
+		<servlet-name>UpdateProfile</servlet-name>
+		<servlet-class>com.devcru.madnotes.UpdateProfile</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UpdateProfile</servlet-name>
+		<url-pattern>/updateprofile</url-pattern>
+	</servlet-mapping>
 
-	<error-page>
-		<!-- Uncaught exception -->
-		<error-code>500</error-code>
-		<location>/general-error.html</location>
-	</error-page>
+	<servlet>
+		<servlet-name>AddNote</servlet-name>
+		<servlet-class>com.devcru.madnotes.AddNote</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AddNote</servlet-name>
+		<url-pattern>/addnote</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>DeleteNote</servlet-name>
+		<servlet-class>com.devcru.madnotes.DeleteNote</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DeleteNote</servlet-name>
+		<url-pattern>/deletenote</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>EditNote</servlet-name>
+		<servlet-class>com.devcru.madnotes.EditNote</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>EditNote</servlet-name>
+		<url-pattern>/editnote</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>UploadImage</servlet-name>
+		<servlet-class>com.devcru.madnotes.UploadImage</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UploadImage</servlet-name>
+		<url-pattern>/uploadimage</url-pattern>
+	</servlet-mapping>
 
-	<error-page>
-		<!-- Unsupported servlet method -->
-		<error-code>503</error-code>
-		<location>/general-error.html</location>
-	</error-page>
-
-	<error-page>
-		<exception-type>java.lang.Exception</exception-type>
-		<location>/error.jsp</location>
-	</error-page>
-
-	<error-page>
-		<exception-type>java.lang.Throwable</exception-type>
-		<location>/error.jsp</location>
-	</error-page>
-
-	<error-page>
-		<!-- Generic all-else error message -->
-		<location>/error.jsp</location>
-	</error-page>
+	<!-- SESSION CONFIGURATION -->
+	<session-config>
+		<session-timeout>1440</session-timeout>
+	</session-config>
 
 </web-app>

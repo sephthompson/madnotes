@@ -3,51 +3,70 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="shortcut icon" href="../../assets/ico/favicon.ico">
 
-    <title>welcome to madnotes</title>
+<title>welcome to madnotes</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="static/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap core CSS -->
+<link href="static/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <link href="dynamic/css/signin.css" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link href="dynamic/css/signin.css" rel="stylesheet">
+<link href="dynamic/css/footer.css" rel="stylesheet">
 
-    <!-- Just for debugging purposes. Don't actually copy this line! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+</head>
+<body>
+	<%@include file="menubar.jsp"%>
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
+	<!-- Note the column within the row within the container.  This must be set for all subsequent pages until Angular can be implemented -->
+	<div class="container" style="text-align: center;">
+		<div class="row" style="display: inline-block;">
+			<div class="col-sm-3 col-lg-12">
+				<h1 style="text-align: center;">madnotes</h1>
 
-  <body>
+				<form class="form-signin" role="form" action=signin method="post">
+					<h2 class="form-signin-heading" style="text-align: left;">please
+						sign in</h2>
+					<input name="email" type="email" class="form-control"
+						placeholder="email address" required autofocus> <input
+						name="password" type="password" class="form-control"
+						placeholder="password" required> <label class="checkbox"
+						style="width: 45%; display: inline-block; text-align: center">
+						<input type="checkbox" value="remember-me"> remember me
+					</label> <a href="forgotpass.jsp"
+						style="width: 45%; display: inline-block; text-align: center">forgot
+						password?</a>
+					<button class="btn btn-lg btn-primary btn-block" type="submit">sign
+						in</button>
+				</form>
+				<p style="text-align: center;">
+					if you do not have an account, please <a href="register.jsp">register</a>.
+				</p>
+			</div>
+		</div>
+	</div>
+	<!-- /row -->
 
-    <div class="container">
-
-      <form class="form-signin" role="form" action=Signin method="post">
-        <h2 class="form-signin-heading">please sign in</h2>
-        <input type="email" class="form-control" placeholder="email address" required autofocus>
-        <input type="password" class="form-control" placeholder="password" required>
-        <label class="checkbox">
-          <input type="checkbox" value="remember-me"> remember me
-        </label>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">sign in</button>
-      </form>
-
-    </div> <!-- /container -->
+	<%@include file="footer.jsp"%>
 
 
-    <!-- Bootstrap core JavaScript
+	<!-- Bootstrap core JavaScript
     ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-  </body>
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="static/js/bootstrap.min.js"></script>
+</body>
 </html>
+
+<%
+	if (session.getAttribute("email") != null) {
+		response.sendRedirect("profile.jsp");
+	}
+%>
