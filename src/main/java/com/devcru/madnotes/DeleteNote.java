@@ -23,7 +23,7 @@ public class DeleteNote extends HttpServlet {
 		HttpSession session = request.getSession(true);
 		
 		int post_id = Integer.parseInt(request.getParameter("post_id")); // this feels dirty, but it works.
-		int user_id = (int) session.getAttribute("user_id");
+		int user_id = (Integer) session.getAttribute("user_id");
 		
 		// Referencing email is ineffective.  We must reference the user_id in a table-join.
 		// This ensures that only the logged in user is allowed to delete their own note(s).

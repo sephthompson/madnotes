@@ -26,7 +26,7 @@ public class AddNote extends HttpServlet {
 		HttpSession session = request.getSession(true);
 		
 		String addnote = request.getParameter("addnote");
-		int user_id = (int) session.getAttribute("user_id");
+		int user_id = (Integer) session.getAttribute("user_id");
 
 		// Referencing email is ineffective.  We need to reference the user_id here.
 		// This query will need to be rewritten and tested.

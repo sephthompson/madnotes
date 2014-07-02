@@ -29,7 +29,7 @@ public class EditNote extends HttpServlet {
 		
 		String editnote = request.getParameter("editnote");
 		int post_id = Integer.parseInt(request.getParameter("post_id")); // this feels dirty, but it works.
-		int user_id = (int) session.getAttribute("user_id");
+		int user_id = (Integer) session.getAttribute("user_id");
 
 		
 		String preppedQuery = 	"UPDATE notes SET content = ?"
