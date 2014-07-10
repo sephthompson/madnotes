@@ -20,7 +20,7 @@ public class Signin extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-		String url = "jdbc:postgresql://localhost:5432/madnotes?user=postgres&password=pass1234";
+		String url = "jdbc:postgres://gogimhfcpjxqrl:8aYEwVsOfS27mVbmexusgRQfNI@ec2-54-83-33-14.compute-1.amazonaws.com:5432/d5n7019odngdsm";
 
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");

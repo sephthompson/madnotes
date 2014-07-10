@@ -43,7 +43,7 @@ public class UpdateProfile extends HttpServlet{
 			System.out.println(e.getMessage());
 		}
 		try {
-			String url = "jdbc:postgresql://localhost:5432/madnotes?user=postgres&password=pass1234";
+			String url = "jdbc:postgres://gogimhfcpjxqrl:8aYEwVsOfS27mVbmexusgRQfNI@ec2-54-83-33-14.compute-1.amazonaws.com:5432/d5n7019odngdsm";
 			Connection con = DriverManager.getConnection(url);
 			Statement stmt = con.createStatement();
 			stmt.execute(updateQuery);
