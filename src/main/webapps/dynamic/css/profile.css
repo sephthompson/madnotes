@@ -1,0 +1,40 @@
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #eee;
+}
+
+.profile {
+  max-width: 500px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.profile .profile-heading,
+.profile .checkbox {
+  margin-bottom: 10px;
+}
+.profile .checkbox {
+  font-weight: normal;
+}
+.profile .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.profile .form-control:focus {
+  z-index: 2;
+}
+.profile input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.profile input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
