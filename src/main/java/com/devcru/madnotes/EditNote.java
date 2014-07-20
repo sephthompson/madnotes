@@ -23,9 +23,13 @@ public class EditNote extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+<<<<<<< HEAD
 		
 		DBConnectionManager dbCon = new DBConnectionManager();
 		String url = dbCon.getUrl();
+=======
+		String url = "jdbc:postgres://gogimhfcpjxqrl:8aYEwVsOfS27mVbmexusgRQfNI@ec2-54-83-33-14.compute-1.amazonaws.com:5432/d5n7019odngdsm";
+>>>>>>> 44dfab2dc13a8107610bd9803e5d74dd19c3ebf8
 		
 		HttpSession session = request.getSession(true);
 		
