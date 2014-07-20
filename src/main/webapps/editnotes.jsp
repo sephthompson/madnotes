@@ -36,8 +36,8 @@
 					</tr>
 					
 					<tr>
-						<td>&nbsp;&nbsp;&nbsp;&nbsp;<%=request.getParameter("post_date")%></td>
-						<td>&nbsp;&nbsp;&nbsp;&nbsp;<%=request.getParameter("content")%></td>
+						<td>&nbsp;&nbsp;&nbsp;&nbsp;<%=session.getAttribute("post_date")%></td>
+						<td>&nbsp;&nbsp;&nbsp;&nbsp;<%=session.getAttribute("content")%></td>
 					</tr>
 				</tbody>
 			</table>
@@ -46,7 +46,7 @@
 				<tr style="margin: 5px; text-align: center;">
 					<td><input type="hidden" name="post_id" value='<%=request.getParameter("post_id")%>'></td>
 					<td style="vertical-align: middle;">
-						<textarea type="text" name="editnote" cols="100" rows="3" style="padding: 6px;"><%=request.getParameter("content")%></textarea>
+						<textarea type="text" name="editnote" cols="100" rows="3" style="padding: 6px;"><%=session.getAttribute("content")%></textarea>
 					</td>
 					<td style="vertical-align: middle;">
 						<p><button class="btn btn-md btn-primary" type="submit" style="background: rgb(155, 207, 151); border-color: gray;">UPDATE</button></p>
@@ -58,7 +58,6 @@
 	</div>
 	<br>
 	<br>
-	<!-- CONSIDER PLACING AS CANCEL BUTTON IN THE FORM -->
 	<p style="text-align: center;">
 		<a href=notes.jsp>go to your notes</a>
 	</p>

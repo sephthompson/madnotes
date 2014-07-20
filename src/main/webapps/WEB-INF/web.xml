@@ -9,6 +9,25 @@
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
 
+	<!-- DB CONNECTION VALUES BEGIN HERE -->
+	
+	<context-param>
+		<param-name>dbUser</param-name>
+		<param-value>postgres</param-value>
+	</context-param>
+	
+	<context-param>
+		<param-name>dbPassword</param-name>
+		<param-value>pass1234</param-value>
+	</context-param>
+	
+	<context-param>
+		<param-name>dbURL</param-name>
+		<param-value>jdbc:postgresql://localhost:5432/madnotes</param-value>
+	</context-param>
+	
+	<!-- DB CONNECTION VALUES END HERE -->
+
 	<servlet>
 		<servlet-name>Signin</servlet-name>
 		<servlet-class>com.devcru.madnotes.Signin</servlet-class>
@@ -53,7 +72,7 @@
 		<servlet-name>AddNote</servlet-name>
 		<url-pattern>/addnote</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>DeleteNote</servlet-name>
 		<servlet-class>com.devcru.madnotes.DeleteNote</servlet-class>
@@ -62,7 +81,7 @@
 		<servlet-name>DeleteNote</servlet-name>
 		<url-pattern>/deletenote</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>EditNote</servlet-name>
 		<servlet-class>com.devcru.madnotes.EditNote</servlet-class>
@@ -72,6 +91,15 @@
 		<url-pattern>/editnote</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>ShowContent</servlet-name>
+		<servlet-class>com.devcru.madnotes.ShowContent</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ShowContent</servlet-name>
+		<url-pattern>/showcontent</url-pattern>
+	</servlet-mapping>
+
 	<servlet>
 		<servlet-name>UploadImage</servlet-name>
 		<servlet-class>com.devcru.madnotes.UploadImage</servlet-class>

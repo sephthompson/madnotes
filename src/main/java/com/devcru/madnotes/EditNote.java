@@ -23,17 +23,20 @@ public class EditNote extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		String url = "jdbc:postgresql://localhost:5432/madnotes?user=postgres&password=pass1234";
+		
+		DBConnectionManager dbCon = new DBConnectionManager();
+		String url = dbCon.getUrl();
 		
 		HttpSession session = request.getSession(true);
 		
 		String editnote = request.getParameter("editnote");
-		int post_id = Integer.parseInt(request.getParameter("post_id")); // this feels dirty, but it works.
+		//int post_id = Integer.parseInt(request.getParameter("post_id")); // this feels dirty, but it works.
+		int post_id = (Integer) session.getAttribute("post_id");
 		int user_id = (Integer) session.getAttribute("user_id");
 
 		
 		String preppedQuery = 	"UPDATE notes SET content = ?"
-								+ " FROM accounts"
+								//+ " FROM accounts" // guess we don't need this..
 								+ " WHERE notes.post_id = ?"
 								+ " AND notes.user_id = ?;"; // where this is the accounts.user_id stored in session
 

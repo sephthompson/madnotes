@@ -21,6 +21,9 @@ public class UpdateProfile extends HttpServlet{
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		
+		DBConnectionManager dbCon = new DBConnectionManager();
+		String url = dbCon.getUrl();
+		
 		HttpSession session = request.getSession(true);
 		
 		String email = (String) session.getAttribute("email");
@@ -43,7 +46,6 @@ public class UpdateProfile extends HttpServlet{
 			System.out.println(e.getMessage());
 		}
 		try {
-			String url = "jdbc:postgresql://localhost:5432/madnotes?user=postgres&password=pass1234";
 			Connection con = DriverManager.getConnection(url);
 			Statement stmt = con.createStatement();
 			stmt.execute(updateQuery);

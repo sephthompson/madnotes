@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class Notes extends HttpServlet {
+	
+	// CURRENTLY NOT IN USE
 
 	private static final long serialVersionUID = 6736266448070943215L;
 

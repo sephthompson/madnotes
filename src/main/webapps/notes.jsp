@@ -40,18 +40,18 @@
 
 </head>
 
-<body>
+<body style="background-color: rgb(100, 100, 100);">
 
 	<%@include file="menubar.jsp"%>
 
 	<h1 style="text-align: center;">your madnotes</h1>
 	<div
-		style="border: 3px solid; border-radius: 6px; width: 1000px; margin: 0 auto;">
+		style="border: 3px solid; border-radius: 6px; width: 1000px; margin: 0 auto; background-color: rgb(250, 250, 250);">
 			<table class="table" style="width: 1000px;" align="center">
 				<tbody>
 					<tr style="margin: 5px;">
 							<td>posted on</td>
-							<td>post</td>
+							<td>title</td>
 					</tr>
 					<%
 						// Replace email with the user_id stored in session.
@@ -68,7 +68,7 @@
 							int postCount = 0;
 							con = cOpen();
 							// This should be a much simpler query WHERE notes.user_id = ? // <-- accounts.user_id stored in session
-							SQL = "SELECT post_id, post_date, content FROM notes WHERE notes.user_id = ?";
+							SQL = "SELECT post_id, post_date, title FROM notes WHERE notes.user_id = ? ORDER BY post_date ASC";
 							ps = con.prepareStatement(SQL);
 							ps.setInt(1, user_id);
 							rs = ps.executeQuery();
@@ -77,12 +77,12 @@
 					%>
 					<tr>
 						<td>&nbsp;&nbsp;&nbsp;&nbsp;<%=rs.getString("post_date")%></td>
-						<td>&nbsp;&nbsp;&nbsp;&nbsp;<%=rs.getString("content")%></td>
+						<td>&nbsp;&nbsp;&nbsp;&nbsp;<%=rs.getString("title")%></td>
 						<td>
-							<form action="editnotes.jsp" method="post">
+							<form action="showcontent" method="post">
 								<input type="hidden" name="post_id" value='<%=rs.getString("post_id")%>'>
 								<input type="hidden" name="post_date" value='<%=rs.getString("post_date")%>'>
-								<input type="hidden" name="content" value='<%=rs.getString("content")%>'>
+								<input type="hidden" name="title" value='<%=rs.getString("title")%>'>
 								<button type="submit" style="border: 0; outline: 0; background: none;">
 								<span class="glyphicon glyphicon-pencil"></span>
 								</button>
