@@ -1,12 +1,18 @@
+<%@ page import="com.devcru.madnotes.DBConnectionManager"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" import="java.sql.*"%>
 
-<%!public Connection cOpen() throws SQLException {
+<%!
+	public Connection cOpen() throws SQLException {
 		// This entire damn thing needs to be separated into its own class somehow...
+		
+		DBConnectionManager dbCon = new DBConnectionManager();
+		String url = dbCon.getUrl();
+		
 		Connection con = null;
 		try {
 			con = DriverManager
-					.getConnection("jdbc:postgresql://localhost:5432/madnotes?user=postgres&password=pass1234");
+					.getConnection(url);
 		} catch (Exception e) {
 			e.printStackTrace(System.out);
 		}
