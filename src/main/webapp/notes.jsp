@@ -137,7 +137,7 @@
 		<form action="addnote" method="post">
 			<table class="table" style="width: 1000px;" align="center">
 				<tr style="margin: 5px; text-align: center;">
-					<td style="vertical-align: middle;"><textarea type="text" name="addnote" cols="100" rows="3" placeholder="add new note" style="padding: 6px;"></textarea></td>
+					<td style="vertical-align: middle;"><textarea type="text" name="addnote" cols="100" rows="3" placeholder="add new note (title)" style="padding: 6px;"></textarea></td>
 					<td style="vertical-align: middle;"><button class="btn btn-md btn-primary" type="submit">SUBMIT</button></td>
 				</tr>
 			</table>

@@ -79,6 +79,14 @@ public class Signin extends HttpServlet {
 		} catch (SQLException e) {
 			System.out.println("SQLException occured: " + e.getMessage());
 			e.printStackTrace();
+		} finally {
+			if (con != null) {
+				try {
+					con.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 	}
 

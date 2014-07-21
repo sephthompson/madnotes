@@ -34,7 +34,7 @@ public class AddNote extends HttpServlet {
 		// This query will need to be rewritten and tested.
 		// Task COMPLETED!
 		
-		String preppedQuery = 	"INSERT INTO notes (user_id, content)"
+		String preppedQuery = 	"INSERT INTO notes (user_id, title)"
 							+ " VALUES (?, ?)";
 
 		Connection con = null;
